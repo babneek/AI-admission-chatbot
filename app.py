@@ -14,52 +14,18 @@ from utils import (
     anonymize_candidate_data,
 )
 
-st.set_page_config(page_title="Nursing College Admission Assistant", layout="centered")
-
-# Initialize all required session state variables
+# Initialize session state variables
 if "step" not in st.session_state:
     st.session_state.step = 0
-
 if "ended" not in st.session_state:
     st.session_state.ended = False
-
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
-
 if "candidate" not in st.session_state:
     st.session_state.candidate = {}
 
-def add_to_history(role, content):
-    st.session_state.chat_history.append({"role": role, "content": content})
-
-# Display chat history
-st.title("Nursing College Admission Assistant")
-for entry in st.session_state.chat_history:
-    st.chat_message(entry["role"]).write(entry["content"])
-
-def is_positive(text):
-    return any(word in text.lower() for word in ["haan", "yes", "batao", "kya hai", "sahi hai"])
-
-def is_negative(text):
-    return any(word in text.lower() for word in ["nahi", "no", "mat karo", "chhodo", "koi baat nahi"])
-
-# Conversation-ending keywords
-END_KEYWORDS = ["exit", "quit", "end", "bye", "goodbye"]
-
-# Candidate info fields in order
-INFO_FIELDS = [
-    ("name", "Full Name"),
-    ("email", "Email Address"),
-    ("phone", "Phone Number"),
-    ("experience", "Years of Experience"),
-    ("position", "Desired Position(s)"),
-    ("location", "Current Location"),
-    ("tech_stack", "Tech Stack (languages, frameworks, databases, tools)")
-]
-
 # Main chat area
-st.title("TalentScout Hiring Assistant")
-st.write("Welcome to TalentScout! Please interact with our AI assistant to begin your application.")
+st.title("Nursing College Admission Assistant")
 
 # Display chat history
 for entry in st.session_state.chat_history:
@@ -72,7 +38,8 @@ if st.session_state.ended:
 
 # Chatbot logic
 if st.session_state.step == 0:
-    add_to_history("assistant", get_greeting())
+    st.session_state.chat_history.clear()  # Optional: clear history on restart
+    st.session_state.chat_history.append({"role": "assistant", "content": get_greeting()})
     st.session_state.step = 1
     st.rerun()
 
