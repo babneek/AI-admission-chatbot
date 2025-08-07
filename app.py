@@ -2,7 +2,7 @@ import streamlit as st
 from prompts import (
     get_greeting,
     get_info_prompt,
-    get_tech_questions_prompt,
+    # get_tech_questions_prompt,  # Remove or comment out this line
     get_fallback_prompt,
     get_end_convo_prompt,
     get_interest_prompt,
