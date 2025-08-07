@@ -24,3 +24,11 @@ def anonymize_candidate_data(candidate):
         "email": "[REDACTED]",
         "phone": "[REDACTED]"
     }
+
+def is_positive(user_input):
+    positive_keywords = ["haan", "yes", "y", "batao", "tell", "sure", "ok", "kya hai", "please", "more", "ji"]
+    return any(word in user_input.lower() for word in positive_keywords)
+
+def is_negative(user_input):
+    negative_keywords = ["nahi", "no", "nah", "not interested", "nope"]
+    return any(word in user_input.lower() for word in negative_keywords)
