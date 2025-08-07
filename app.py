@@ -145,8 +145,29 @@ elif st.session_state.step == 10:
     st.session_state.step = 11
     st.rerun()
 
-# Step 11: End Conversation
+# After seats and eligibility info
 elif st.session_state.step == 11:
-    add_to_history("assistant", get_end_convo_prompt())
-    st.session_state.ended = True
+    add_to_history("assistant", get_info_prompt("name"))
+    st.session_state.step = 12
     st.rerun()
+
+elif st.session_state.step == 12:
+    user_input = st.chat_input("अपना नाम लिखें...")
+    if user_input:
+        add_to_history("user", user_input)
+        st.session_state.candidate["name"] = user_input.strip()
+        add_to_history("assistant", get_info_prompt("phone"))
+        st.session_state.step = 13
+        st.rerun()
+
+elif st.session_state.step == 13:
+    user_input = st.chat_input("अपना मोबाइल नंबर लिखें...")
+    if user_input:
+        add_to_history("user", user_input)
+        if validate_phone(user_input):
+            st.session_state.candidate["phone"] = user_input.strip()
+            add_to_history("assistant", "धन्यवाद! हमारी टीम जल्द ही आपसे संपर्क करेगी।")
+            st.session_state.ended = True
+        else:
+            add_to_history("assistant", "कृपया एक मान्य मोबाइल नंबर दर्ज करें।")
+        st.rerun()
