@@ -78,12 +78,14 @@ elif st.session_state.step == 2:
     user_input = st.chat_input("Type your answer...")
     if user_input:
         add_to_history("user", user_input)
-        if "biology" in user_input.lower():
+        if is_positive(user_input):
             add_to_history("assistant", get_program_details_prompt())
             st.session_state.step = 3
-        else:
+        elif is_negative(user_input):
             add_to_history("assistant", get_biology_required_prompt())
             st.session_state.ended = True
+        else:
+            add_to_history("assistant", get_fallback_prompt())
         st.rerun()
 
 # Step 3: Program Details
