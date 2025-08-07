@@ -2,14 +2,12 @@ import streamlit as st
 from prompts import (
     get_greeting,
     get_info_prompt,
-    # get_tech_questions_prompt,  # Remove or comment out this line
     get_fallback_prompt,
     get_end_convo_prompt,
     get_interest_prompt,
     get_negative_acknowledgement,
 )
 from utils import (
-    # call_llm,  # Remove or comment out this line
     is_end_conversation,
     validate_email,
     validate_phone,
@@ -23,6 +21,8 @@ if "conversation_step" not in st.session_state:
     st.session_state.conversation_step = 0
     st.session_state.chat_history = []
     st.session_state.user_eligible = None
+if "ended" not in st.session_state:
+    st.session_state.ended = False
 
 def add_to_history(role, content):
     st.session_state.chat_history.append({"role": role, "content": content})
