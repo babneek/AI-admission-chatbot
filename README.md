@@ -2,12 +2,16 @@
 
 An intelligent, rule-based chatbot built with Streamlit to guide prospective students through the Nursing College admission process. The assistant provides clear, step-by-step information about eligibility, program details, fees, facilities, scholarships, and more—ensuring a professional and user-friendly experience.
 
+**🌐 Live Demo:**  
+[ai-admission-chatbot Streamlit App](https://ai-admission-chatbot-mjzlkmguyic4ofbrf5yajn.streamlit.app/)
+
 ## Features
 - Clean Streamlit UI for interactive chat
 - Handles multi-step admission queries
 - Checks eligibility (Biology in 12th, age, PNT exam)
 - Provides detailed program, fee, hostel, and scholarship info
 - Explains recognition, clinical training, and seat availability
+- Collects user name and phone for follow-up if interested
 - Handles positive/negative user responses gracefully
 - No LLM/API required—fully rule-based for reliability and speed
 
@@ -29,6 +33,7 @@ An intelligent, rule-based chatbot built with Streamlit to guide prospective stu
 ## Usage Guide
 - Launch the app and follow the assistant’s prompts.
 - Respond to questions about your interest, eligibility, and information needs.
+- At the end, if interested, provide your name and phone number for follow-up.
 - Type 'exit' at any time to end the conversation.
 
 ## Conversation Flow
@@ -42,6 +47,7 @@ An intelligent, rule-based chatbot built with Streamlit to guide prospective stu
 - **Clinical Training:** Lists clinical training locations
 - **Scholarships:** Describes available scholarships
 - **Seats & Eligibility:** Shares seat count and full eligibility criteria
+- **User Info Collection:** Asks for name and phone if user is interested
 - **Response Handling:** Continues for positive responses, ends politely for negative
 
 ## Technical Details
