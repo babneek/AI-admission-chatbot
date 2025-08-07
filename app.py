@@ -16,13 +16,18 @@ from utils import (
 
 st.set_page_config(page_title="Nursing College Admission Assistant", layout="centered")
 
-# Initialize session state
-if "conversation_step" not in st.session_state:
-    st.session_state.conversation_step = 0
-    st.session_state.chat_history = []
-    st.session_state.user_eligible = None
+# Initialize all required session state variables
+if "step" not in st.session_state:
+    st.session_state.step = 0
+
 if "ended" not in st.session_state:
     st.session_state.ended = False
+
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
+if "candidate" not in st.session_state:
+    st.session_state.candidate = {}
 
 def add_to_history(role, content):
     st.session_state.chat_history.append({"role": role, "content": content})
