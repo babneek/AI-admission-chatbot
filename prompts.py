@@ -17,7 +17,7 @@ def get_biology_required_prompt():
 
 def get_program_details_prompt():
     return (
-        "B.Sc Nursing एक full-time प्रोग्राम है जिसमें आपको theoretical और practical दोनों तरह की शिक्षा मिलेगी। "
+        "B.Sc Nursing एक full-time प्रोग्राम है जिसमें theoretical और practical दोनों तरह की शिक्षा मिलेगी। "
         "क्या आप प्रोग्राम के बारे में और जानकारी चाहते हैं?"
     )
 
@@ -81,6 +81,15 @@ def get_eligibility_prompt():
         "• आयु: 17 से 35 वर्ष"
     )
 
+def get_info_prompt(field):
+    prompts = {
+        "name": "कृपया अपना नाम बताएं।",
+        "email": "कृपया अपना ईमेल पता दर्ज करें।",
+        "phone": "कृपया अपना मोबाइल नंबर दर्ज करें।",
+        "city": "आप किस शहर से हैं?",
+    }
+    return prompts.get(field, f"कृपया अपनी {field} जानकारी दें।")
+
 def get_positive_acknowledgement():
     return "बहुत अच्छा! आगे बढ़ते हैं।"
 
@@ -92,13 +101,3 @@ def get_fallback_prompt():
 
 def get_end_convo_prompt():
     return "आपका समय देने के लिए धन्यवाद! अगर आपको और जानकारी चाहिए तो फिर से संपर्क करें। शुभकामनाएँ!"
-
-def get_info_prompt(field):
-    prompts = {
-        "name": "कृपया अपना नाम बताएं।",
-        "email": "कृपया अपना ईमेल पता दर्ज करें।",
-        "phone": "कृपया अपना मोबाइल नंबर दर्ज करें।",
-        "city": "आप किस शहर से हैं?",
-        # Add more fields as needed
-    }
-    return prompts.get(field, f"कृपया अपनी {field} जानकारी दें।")
